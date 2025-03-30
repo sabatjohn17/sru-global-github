@@ -1,0 +1,32 @@
+{
+  "name": "SRU Global Logistics",
+  "version": "1.0.0",
+  "description": "A modern responsive website for SRU Global Logistics company",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./css/input.css -o ./css/styles.css --watch",
+    "build": "npx tailwindcss -i ./css/input.css -o ./css/styles.css --minify"
+  },
+  "keywords": [
+    "logistics",
+    "transport",
+    "shipping",
+    "supply chain",
+    "freight"
+  ],
+  "author": "Ajit Sabat",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.15",
+    "tailwindcss": "^4.0.15"
+  },
+  "browserslist": [
+    ">0.3%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ]
+}

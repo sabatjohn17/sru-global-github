@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #142b59;
+  --color-secondary: #e8edf5;
+  --color-accent: #ff7d3c;
+  --color-light: #f8fafd;
+
+  --font-sans: "Montserrat", sans-serif;
+}
+
+/* 3. Improve performance with hardware acceleration for animations */
+.middle-expand-underline,
+.nav-link-animation,
+#mobile-menu,
+#mobile-menu-panel,
+.testimonial-slide {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Custom Navigation Link Animations */
+.middle-expand-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.middle-expand-underline::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  background-color: var(--color-primary);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.middle-expand-underline:hover::after {
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 4. Add print styles for better printing */
+@media print {
+  nav,
+  footer,
+  .mobile-menu-button,
+  .back-to-top,
+  .testimonial-controls {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000;
+    background-color: #fff;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  /* Ensure URLs are displayed for links in print */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #555;
+  }
+}
+
+/* ... existing code ... */
+
+/* Mobile Menu Transitions */
+#mobile-menu {
+  transition: opacity 0.3s ease-in-out;
+}
+
+#mobile-menu.hidden {
+  display: none;
+}
+
+/* Prevent scrolling when mobile menu is open */
+body.overflow-hidden {
+  overflow: hidden;
+}
+
+/* 5. Add better focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Focus styles that only apply when using keyboard navigation */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .testimonial-prev {
+    left: -1rem;
+  }
+
+  .testimonial-next {
+    right: -1rem;
+  }
+
+  /* Improved touch targets */
+  .nav-link,
+  .btn {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 640px) {
+  button,
+  a {
+    /* min-height: 44px;
+    min-width: 44px; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .testimonial-dot {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* 7. Add reduced motion preferences for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide PNG by default (for larger screens) */
+.logo-png {
+  display: none;
+}
+
+.logo-svg {
+  display: block;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .logo-png {
+    display: block;
+  }
+
+  .logo-svg {
+    display: none;
+  }
+}
+
+@media (width >= 80rem) {
+  .container {
+    max-width: 90rem;
+  }
+}
